@@ -1,0 +1,36 @@
+<annotation>
+    <folder>10m</folder>
+    <filename>DJI_0199.JPG</filename>
+    <size>
+        <width>4000</width>
+        <height>2250</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>PlasticBottle</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>826</xmin>
+            <ymin>1529</ymin>
+            <xmax>890</xmax>
+            <ymax>1593</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>Plastic</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>820</xmin>
+            <ymin>1324</ymin>
+            <xmax>998</xmax>
+            <ymax>1483</ymax>
+        </bndbox>
+    </object>
+</annotation>

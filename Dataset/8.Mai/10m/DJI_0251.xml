@@ -1,0 +1,36 @@
+<annotation>
+    <folder>10m</folder>
+    <filename>DJI_0251.JPG</filename>
+    <size>
+        <width>4000</width>
+        <height>2250</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>Plastic</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>3654</xmin>
+            <ymin>425</ymin>
+            <xmax>3803</xmax>
+            <ymax>549</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>Plastic</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>714</xmin>
+            <ymin>2</ymin>
+            <xmax>864</xmax>
+            <ymax>97</ymax>
+        </bndbox>
+    </object>
+</annotation>
