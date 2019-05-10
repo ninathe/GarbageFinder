@@ -6,10 +6,10 @@ with open('annotations.json') as f:
     data = json.load(f)
 
 for image in data["images"]:
-    file.write(image["file_name"])
-    file.write(' ') 
+    file.write('\n'+image["file_name"]+ " ")
 
     for annotation in data["annotations"]:
+        
         if(image["id"] == annotation["image_id"]):
             annotation_num += 1
             bbox = annotation["bbox"]
