@@ -5,17 +5,15 @@ import os, random
 sets=[('2019', 'train'), ('2019', 'val'), ('2019', 'test')]
 classes = ["Other", "Can", "Plastic", "PlasticBottle"]
 
-def convert_annotation(year, sett, image_id, wd):
+def convert_annotation(year, sett, image_id):
     in_file = open('Annotations/%s.xml'%(image_id))
     tree=ET.parse(in_file)
     root = tree.getroot()
-    os.rename('%s/images/%s.jpg'%(wd, image_id), '%s/coco/images/%s%s/COCO_%s%s_%s.jpg'%(wd, sett, year, sett, year, image_id))
-
 
     size = root.find('size')
     width = int(size.find('width').text)
     height = int(size.find('height').text)
-    list_file = open('coco/labels/%s%s/COCO_%s%s_%s.txt'%(sett, year, sett, year, image_id), 'w')
+    list_file = open('labels/%s%s/COCO_%s%s_%s.txt'%(sett, year, sett, year, image_id), 'w')
 
     for obj in root.iter('object'):
         difficult = obj.find('difficult').text
@@ -37,7 +35,6 @@ def convert_annotation(year, sett, image_id, wd):
 wd = os.getcwd()
 dirname = './Annotations'
 files = [f[:-4] for f in os.listdir(dirname) if f[-4:].lower() == '.xml']
-dirname = './Annotations'
 
 # random divide  
 trainval = random.sample(files, len(files)//2)
@@ -48,9 +45,9 @@ train = random.sample(trainval, len(trainval)//2)
 val = [f for f in trainval if f not in train]
 
 for file in val:
-    convert_annotation("2018", "val", file, wd)
+    convert_annotation("2018", "val", file)
 for t in train:
-    convert_annotation("2018", "train", t, wd)
+    convert_annotation("2018", "train", t)
 
 
     

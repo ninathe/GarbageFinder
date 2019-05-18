@@ -5,12 +5,10 @@ import os, random
 sets=[('2019', 'train'), ('2019', 'val'), ('2019', 'test')]
 classes = ["Other", "Can", "Plastic", "PlasticBottle"]
 
-def convert_annotation(year, sett, image_id, wd):
+def convert_annotation(year, sett, image_id):
     in_file = open('Annotations/%s.xml'%(image_id))
     tree=ET.parse(in_file)
     root = tree.getroot()
-    os.rename('%s/images/%s.jpg'%(wd, image_id), '%s/coco/images/%s%s/COCO_%s%s_%s.jpg'%(wd, sett, year, sett, year, image_id))
-
 
     size = root.find('size')
     width = int(size.find('width').text)
@@ -37,20 +35,23 @@ def convert_annotation(year, sett, image_id, wd):
 wd = os.getcwd()
 dirname = './Annotations'
 files = [f[:-4] for f in os.listdir(dirname) if f[-4:].lower() == '.xml']
-dirname = './Annotations'
+print(len(files))
 
-# random divide  
-trainval = random.sample(files, len(files)//2)
-test = [f for f in files if f not in trainval]
+random.shuffle(files)
+trainLen = int(len(files)*0.75)
+valLen = len(files) -trainLen
 
-# random divide 
-train = random.sample(trainval, len(trainval)//2)
-val = [f for f in trainval if f not in train]
+train_data = files[:trainLen]
+val_data = files[trainLen:]
 
-for file in val:
-    convert_annotation("2018", "val", file, wd)
-for t in train:
-    convert_annotation("2018", "train", t, wd)
+print(len(train_data))
+print(len(val_data))
+
+
+for file in val_data:
+    convert_annotation("2018", "val", file.lower())
+for t in train_data:
+    convert_annotation("2018", "train", t.lower())
 
 
     
